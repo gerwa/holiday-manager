@@ -68,22 +68,35 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: Rails.application.secrets.domain_name,
-    authentication: :plain,
-    enable_starttls_auto: true,
-    user_name: Rails.application.secrets.email_provider_username,
-    password: Rails.application.secrets.email_provider_password
-  }
+  #config.action_mailer.smtp_settings = {
+  #  address: "smtp.gmail.com",
+  #  port: 587,
+  #  domain: Rails.application.secrets.domain_name,
+  #  authentication: :plain,
+  #  enable_starttls_auto: true,
+  #  user_name: Rails.application.secrets.email_provider_username,
+  #  password: Rails.application.secrets.email_provider_password
+  #}
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
-  #config.action_mailer.default_url_options = { :host => 'https://sleepy-everglades-88866.herokuapp.com' }
+  #config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
+  config.action_mailer.default_url_options = { :host => 'https://sleepy-everglades-88866.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
+  config.action_mailer.delivery_method = :smtp
+ 
+  config.action_mailer.smtp_settings = {
+    :user_name            => ENV['SENDGRID_USERNAME'],
+    :password             => ENV['SENDGRID_PASSWORD'],
+    :address              => "smtp.sendgrid.net",
+    :port                 => 587,
+    :enable_starttls_auto => true,
+    :authentication       => :plain,
+    :domain               => "hotmail.ch"
+  }
+  
+  config.action_mailer.default_options = { from: "gertraud.wachmann@hotmail.ch" }
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
