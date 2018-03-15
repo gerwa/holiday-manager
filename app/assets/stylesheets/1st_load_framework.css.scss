@@ -4,7 +4,7 @@
 
 // make all images responsive by default
 img {
-  @extend .img-fluid;
+  //@extend .img-fluid;
   margin: 0 auto;
 }
 // override for the 'Home' navigation link
@@ -36,7 +36,7 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  margin-top: 30px; // accommodate the navbar
+  margin-top: 60px; // accommodate the navbar
 }
 
 section {
@@ -53,10 +53,10 @@ section {
   margin: 0 auto;
 }
 .authform form {
-  @extend .card;
+  //@extend .card;
   @extend .col-md-9;
   padding-bottom: 40px;
-  @extend .bg-light;
+  //@extend .bg-light;
   @extend .small;
 }
 .authform .right {
@@ -67,7 +67,7 @@ section {
   @extend .btn-primary;
 }
 .authform fieldset {
-  @extend .card;
+  //@extend .card;
 }
 #error_explanation:not(:empty) {
   @extend .alert;
@@ -81,3 +81,7 @@ section {
   @extend .btn-primary;
   @extend .btn-sm;
 }
+
+
+// own css
+

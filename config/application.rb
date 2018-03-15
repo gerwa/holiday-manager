@@ -23,5 +23,15 @@ module HolidayManager
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    
+    I18n.enforce_available_locales = false
+    I18n.default_locale = :it 
+
+	  config.i18n.enforce_available_locales = false
+	  config.i18n.default_locale = :it
+	  config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'models', '*', '*.yml').to_s]
+	  config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'views', '*', '*.yml').to_s]
+      
+    
   end
 end
