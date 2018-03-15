@@ -1,0 +1,16 @@
+- if user_signed_in?
+  %li{role: "presentation", class: 'nav-item'}
+    = link_to I18n.t('deviseforms.mydata'), edit_user_registration_path
+  %li{role: "presentation", class: 'nav-item'}
+    = link_to I18n.t('deviseforms.destroysession'), destroy_user_session_path, :method=>'delete'
+- else
+  %li{role: "presentation", class: 'nav-item'}
+    = link_to I18n.t('deviseforms.sign_in'), new_user_session_path
+  %li{role: "presentation", class: 'nav-item'}
+    = link_to I18n.t('deviseforms.sign_up'), new_user_registration_path
+    
+- if user_signed_in?
+  - if current_user.try(:admin?)
+    %li{role: "presentation", class: 'nav-item'}
+      = link_to I18n.t('deviseforms.users'), users_path
+
