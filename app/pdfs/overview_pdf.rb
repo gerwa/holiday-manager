@@ -38,7 +38,17 @@ class OverviewPdf < PdfReportMethods
       
       move_down(50)
       text 'KOMMENTARE', :size => 12, :style => :bold
-      comments_items
+      move_down(10)
+      if @comments
+        @comments.each do |comment| 
+          text comment.nachname + ' ' + comment.vorname + " ("+ 
+            Time.at(comment.ankunft.to_i).in_time_zone("Rome").to_date.strftime('%d.%m.%Y') + " - " +
+            Time.at(comment.abfahrt.to_i).in_time_zone("Rome").to_date.strftime('%d.%m.%Y') + "): " +
+            comment.bem_essen + " / " + comment.bem_anderes
+          stroke_horizontal_rule
+          move_down(5)
+        end
+      end
     end
 
     pagenumbers
@@ -91,7 +101,7 @@ class OverviewPdf < PdfReportMethods
     table comments_item_rows do
 
       cells.borders = [:bottom]
-      cells.style(:overflow => :shrink_to_fit, :min_font_size => 6, :height => 20, :border_lines => [:dotted], :size => 10)
+      cells.style(:height => 20, :border_lines => [:dotted], :size => 10)
       style(row(0), :font_style => :italic, :align => :center)
       
       columns(0..2).width = 80
