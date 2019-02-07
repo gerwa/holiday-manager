@@ -1,0 +1,16 @@
+%tr
+  %td{:colspan => 4}
+    - if @price.errors.any?
+      .error_explanation
+        %ul
+        - @price.errors.full_messages.each do |msg|
+          %li{:class => 'alert alert-danger'}= msg
+
+%tr
+  %td= select :price, :eid, Event.futureEckstein.collect {|p| [ p.titel + ' (' + Time.at(p.start_datum).in_time_zone("Rome").to_date.to_s + ')', p.id ]}, {prompt: 'Veranstaltung auswählen'}, {placeholder: "Zusatz-Info-Art", class: 'form-control', include_blank: true}
+
+  %td= select :price, :artikel, options_for_select(Price.artikels), {}, {class: 'form-control'}
+  
+  %td= text_field :price, :preis, { placeholder: "Preis", class: 'form-control'}
+  
+  %td= submit_tag 'Speichern', {class: 'btn btn-primary'}

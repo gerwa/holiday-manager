@@ -1,0 +1,26 @@
+%h3 User
+
+%table{:class => "table table-condensed", :id => "todo-list"}
+  %thead
+    %tr
+      %th Email
+      %th role
+      %th
+
+  %tbody
+    - @users.each do |user| 
+      %tr
+        %td= link_to user.email, user
+        %td= user.role
+        %td
+          = link_to 'Change PW', users_changepw_path(id: user.id)
+          = link_to 'Edit', edit_user_path(user)
+          = link_to 'Delete', user_path(user), :method => 'delete', :confirm => 'Are you sure?'
+
+%h3 Neu:
+
+= form_for @user do |f|
+  = render :partial => 'form', :locals => {:f => f}
+  = render :partial => 'pwform', :locals => {:f => f}
+  .actions
+    = f.submit

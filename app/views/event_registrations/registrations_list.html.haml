@@ -1,0 +1,37 @@
+= content_for(:title, 'Anmeldungen')
+%h3 
+  Anmeldungen: 
+  = @event.titel + ", " + Time.at(@event.start_datum).in_time_zone("Rome").to_date.strftime('%d.%m.%Y') + " - " + Time.at(@event.end_datum).in_time_zone("Rome").to_date.strftime('%d.%m.%Y')
+  
+  = link_to image_tag("pdf.ico", :style => "max-height:20px; display: inline-block;"), event_registrations_registrations_list_path(:eid => @event.id, format: 'pdf'), target: '_blank', class: 'btn btn-default'
+
+%a{:href => "https://intern.zentrum-eckstein.ch/de/verwalten/ce-anmeldungen-sv&eid="+@event.id.to_s} Anmeldungen bearbeiten
+
+- if @event_registrations
+  %table{:class => "table table-condensed order-filter"}
+    %thead
+      %tr
+        %th aid
+        %th Name
+        %th Ankunft
+        %th Abfahrt
+        %th Übern.
+        %th Bem Essen
+        %th Bem Anderes
+        %th Fr
+        %th Mi
+        %th Ab
+        %th Z-Zi
+        %th Z-Fr
+        %th Z-Mi
+        %th Z-Ab
+        %th Z-IB
+        %th Z-Div
+        %th TOTAL
+        %th Z-bar
+        %th Z-EC
+        %th Z-Re
+        %th
+
+    %tbody
+      = render :partial => 'event_registrations/registration', :collection => @event_registrations, as: :item

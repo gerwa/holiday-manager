@@ -1,0 +1,38 @@
+= content_for(:title, 'Preise')
+%h3 
+  Preise 
+:plain
+  - Zimmerpreise enthalten Frühstück, Frühstückspreis ist für Tagesgäste
+  / mit div können Kursgelder oder anderes hinzugefügt werden
+  / es können spezielle Preise pro Veranstaltung erfasst werden
+  / wenn kein Veranstaltungspreis existiert werden die allgemein gültigen Preise genommen
+
+- if @prices
+  %table{:class => "table table-condensed order-filter", :id => "prices"}
+    %thead
+      %tr
+        %th Veranstaltung
+        %th Artikel
+        %th Preis
+        %th
+        %th
+
+    %tbody
+      = render :partial => 'prices/price', :collection => @prices, as: :item
+      
+%a{:href=>"javascript:void(0)", :onclick=>"toggleAddMask('#add-price')", :class => 'btn btn-primary'} 
+  %i.glyphicon.glyphicon-plus
+        
+#add-price
+
+  = form_tag prices_path, {id: 'new_price', 'data-toggle' => "validator", :method => :post, :remote => :true} do
+    %table{:class => "table table-condensed"}
+      %thead
+        %tr
+          %th Veranstaltung
+          %th Artikel
+          %th Preis
+          %th
+
+      %tbody
+        = render :partial => 'prices/form'

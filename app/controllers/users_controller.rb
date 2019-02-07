@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @user = User.new
   end
 
   def show
@@ -12,6 +13,35 @@ class UsersController < ApplicationController
       unless @user == current_user
         redirect_to root_path, :alert => I18n.t('messages.accessdenied')
       end
+    end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def changepw
+    @user = User.find(params[:id])
+  end
+
+  def create
+    @user = User.new(secure_params)
+
+    if @user.save
+      redirect_to users_url, :flash => { :notice => 'User was successfully created.' }
+    else
+      render :action => 'new'
+    end
+  end
+
+  def update_gvm
+    @user = User.find(params[:id])
+
+    if @user.update_attributes(secure_params)
+      sign_in(@user, :bypass => true) if @user == current_user
+      redirect_to @user, :flash => { :notice => 'User was successfully updated.' }
+    else
+      render :action => 'edit'
     end
   end
 
@@ -29,7 +59,7 @@ class UsersController < ApplicationController
     user.destroy
     redirect_to users_path, :notice => I18n.t('messages.userdeleted')
   end
-
+  
   private
 
   def admin_only
@@ -39,7 +69,7 @@ class UsersController < ApplicationController
   end
 
   def secure_params
-    params.require(:user).permit(:role)
+    params.require(:user).permit(:email, :role, :password, :password_confirmation)
   end
 
 end

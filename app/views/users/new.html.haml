@@ -1,0 +1,8 @@
+%h3 New User
+
+= link_to 'Übersicht', users_path
+
+= form_for @user do |f|
+  = render :partial => 'form', :locals => {:f => f}
+  .actions
+    = f.submit

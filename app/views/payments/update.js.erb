@@ -1,0 +1,5 @@
+$("#reg-<%= @registration.id %>").replaceWith("<%= escape_javascript(render partial: 'event_registrations/registration', locals: { item: @registration } )%>"); 
+$('.edit-form').remove();
+$(document).ready(function() {
+    editRow();
+});

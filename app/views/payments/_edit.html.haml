@@ -1,0 +1,6 @@
+%tr
+  %td{:colspan => 20, :class => 'edit-form'}
+    = form_for(@payment, {'data-toggle' => "validator", :method => :put, :remote => :true}) do |f|
+      %table{:class => "table table-condensed edit-form"}
+        = render :partial => 'form', :locals=>{:f=>f} 
+

@@ -1,2 +1,3 @@
-%li{role: "presentation", class: 'nav-item'}
-  = link_to 'Testmail', visitors_testmail_path, method: :post
+- if user_signed_in?
+  %li{role: "presentation", class: 'nav-item'}
+    = link_to 'Preise', prices_path

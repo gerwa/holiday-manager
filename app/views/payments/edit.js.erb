@@ -1,0 +1,4 @@
+$("#reg-<%= @payment.id %>").closest('tr').after("<%= escape_javascript(render partial: 'edit', locals: { item: @payment } )%>");
+$(document).ready(function() {
+    editRow();
+});

@@ -1,0 +1,22 @@
+%tr{id: "reg-"+item.id.to_s}
+  %td= item.aid
+  %td= item.nachname + ' ' + item.vorname
+  %td= Time.at(item.ankunft.to_i).in_time_zone("Rome").to_date.strftime('%d.%m.%Y')
+  %td= Time.at(item.abfahrt.to_i).in_time_zone("Rome").to_date.strftime('%d.%m.%Y')
+  %td= (item.getRoomcode[item.uebernachtung] unless item.uebernachtung == 0)
+  %td= item.bem_essen
+  %td= item.bem_anderes
+  %td= item.fr
+  %th= item.mi
+  %th= item.ab
+  %td= item.ZZi
+  %th= item.Zfr
+  %th= item.Zmi
+  %td= item.Zab
+  %th= item.ZIb
+  %th= item.Zdiv
+  %th= (item.ZZi+item.Zfr+item.Zmi+item.Zab+item.ZIb+item.Zdiv)
+  %th= item.Zbar
+  %th= item.ZEC
+  %th= item.ZRe
+  %td= link_to "<span class=\"glyphicon glyphicon-pencil has-tooltip\" data-toggle=\"tooltip\" title=\"Beträge ändern\"></span>".html_safe, edit_payment_path(item, aid: item.aid), :remote => :true, :class => 'editRow'

@@ -33,6 +33,10 @@ gem 'thin'
 
 gem 'rails-i18n', '~> 5.1'
 
+# pdf output
+gem 'prawn'
+gem 'prawn-table'
+
 group :development do
   gem 'better_errors'
   gem 'html2haml'

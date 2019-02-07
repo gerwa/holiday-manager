@@ -1,0 +1,6 @@
+%tr{id: "price-"+item.id.to_s}
+  %td= (item.eid.titel unless !item.eid)
+  %td= item.artikel
+  %td= item.preis
+  %td= link_to "<span class=\"glyphicon glyphicon-pencil has-tooltip\" data-toggle=\"tooltip\" title=\"bearbeiten\"></span>".html_safe, edit_price_path(item)
+  %td= link_to "<span class=\"glyphicon glyphicon-trash has-tooltip\" data-toggle=\"tooltip\" title=\"löschen\"></span>".html_safe, item, :method => :delete, :data => { :confirm => 'sicher?' }

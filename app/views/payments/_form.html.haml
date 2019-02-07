@@ -1,0 +1,35 @@
+%tr
+  %td{:colspan => 20}
+    - if @payment.errors.any?
+      .error_explanation
+        %ul
+        - @payment.errors.full_messages.each do |msg|
+          %li{:class => 'alert alert-danger'}= msg
+
+%tr
+  %td Zi
+  %td Fr
+  %td Mi
+  %td Ab
+  %td IB
+  %td Div
+  %td bar
+  %td EC
+  %td Rech
+  
+%tr
+  %td
+    = hidden_field :payment, :id
+    = hidden_field :payment, :aid
+    = text_field :payment, :Zi, { class: 'form-control'}
+
+  %td= text_field :payment, :Fr, { class: 'form-control'}
+  %td= text_field :payment, :Mi, { class: 'form-control'}
+  %td= text_field :payment, :Ab, { class: 'form-control'}
+  %td= text_field :payment, :ib, { class: 'form-control'}
+  %td= text_field :payment, :div, { class: 'form-control'}
+  %td= text_field :payment, :bar, { class: 'form-control'}
+  %td= text_field :payment, :ec, { class: 'form-control'}
+  %td= text_field :payment, :rech, { class: 'form-control'}
+  
+  %td= submit_tag 'Speichern', {class: 'btn btn-primary'}

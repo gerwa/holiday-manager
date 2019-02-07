@@ -17,4 +17,7 @@
 //= require jquery
 //= require jquery-ui
 //= require bootstrap
-//= require_tree .
+//= require moment
+//= require moment-with-locales
+//= require moment-timezone
+//= require_directory ./sitewide

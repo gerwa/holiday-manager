@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module HolidayManager
+module Fregistrations
   class Application < Rails::Application
 
     config.generators do |g|
@@ -25,10 +25,10 @@ module HolidayManager
     # -- all .rb files in that directory are automatically loaded.
     
     I18n.enforce_available_locales = false
-    I18n.default_locale = :it 
+    I18n.default_locale = :de 
 
 	  config.i18n.enforce_available_locales = false
-	  config.i18n.default_locale = :it
+	  config.i18n.default_locale = :de
 	  config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'models', '*', '*.yml').to_s]
 	  config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'views', '*', '*.yml').to_s]
       

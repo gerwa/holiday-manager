@@ -1,0 +1,5 @@
+$("#price-<%= @price.id %>").replaceWith("<%= escape_javascript(render partial: 'price', locals: { item: @price } )%>"); 
+$('.edit-form').remove();
+$(document).ready(function() {
+    editRow();
+});

@@ -1,0 +1,5 @@
+$("#prices").append("<%= escape_javascript(render partial: 'price', locals: { item: @price } )%>");
+$('#new_price')[0].reset();
+$(document).ready(function() {
+    editRow();
+});

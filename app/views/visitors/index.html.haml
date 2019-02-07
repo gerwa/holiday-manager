@@ -1,0 +1,21 @@
+= content_for(:title, 'Veranstaltungen')
+%h3 Veranstaltungen
+
+- if @events
+  %table{:class => "table table-condensed order-filter"}
+    %thead
+      %tr
+        %th Titel
+        %th von
+        %th bis
+        %th Anmeldeschluss
+        %th Anzahl Anmeldungen
+        //%th Veranstaltungsort
+        %th Summen anzeigen
+        %th Internet-edit
+        //%th GVM
+        //%th Import
+
+    %tbody
+      = render :partial => 'events/event', :collection => @events, as: :item
+

@@ -1,0 +1,9 @@
+%tr{id: "event-"+item.id.to_s}
+  %td= link_to item.titel, event_registrations_registrations_list_path(eid: item.id)
+  %td= Time.at(item.start_datum).in_time_zone("Rome").to_date
+  %td= Time.at(item.end_datum).in_time_zone("Rome").to_date
+  %td= item.anmeldeschluss == 0 ? '' : Time.at(item.anmeldeschluss).in_time_zone("Rome").to_date
+  %td= item.event_registrations.count
+  //%td= item.veranstaltungsort
+  %td= link_to image_tag("pdf.ico", :style => "max-height:20px; display: inline-block;"), event_registrations_overview_path(:eid => item.id, format: 'pdf'), target: '_blank', class: 'btn btn-default'
+  %td= link_to 'editieren Web', 'https://intern.zentrum-eckstein.ch/de/verwalten/ce-events-sv&eid=' + item.id.to_s, class: 'btn btn-primary', :target => '_blank'

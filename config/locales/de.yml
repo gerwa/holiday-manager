@@ -227,6 +227,9 @@ de:
     passwordconfirmation: Passwort bestätigen
     sign_in: Login
     forgotpassword: Password vergessen?
+    mydata: Meine Daten
+    destroysession: Logout
+    users: Benutzer
     rememberme: Login speichern
     sendpasswortreset: Du wirst eine Anleitung für ein neues Passwort erhalten.
     resetpasswort: Passwort zurücksetzen
@@ -242,3 +245,8 @@ de:
     cancelaccount: Konto löschen
     sadtoletgo: Konto löschen? Schade dass du gehst!
     sure: Bist du sicher?
+  messages:
+    accessdenied: Zugriff verweigert
+    userupdated: Benutzer geändert
+    unableupdateuser: Benutzer kann nicht geändert werden
+    userdeleted: Benutzer gelöscht

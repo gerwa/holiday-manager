@@ -12,7 +12,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: holiday-manager_development
+  database: fregistrations_development
   pool: 5
   username: root
   password: sqlvmsaas
@@ -25,7 +25,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: holiday-manager_test
+  database: fregistrations_test
   pool: 5
   username: root
   password: sqlvmsaas
@@ -35,8 +35,26 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: holiday-manager_production
+  database: fregistrations_production
   pool: 5
   username: root
   password: sqlvmsaas
   host: localhost
+  
+  
+# internet events and registration:
+webdata_database_development:
+  adapter: mysql2
+  host: fokolarz.mysql.db.hostpoint.ch
+  username: fokolarz_norm5s
+  password: sVFAUMLVfB
+  port: 3306
+  database: fokolarz_main5
+
+webdata_database_production:
+  adapter: mysql2
+  host: fokolarz.mysql.db.hostpoint.ch
+  username: fokolarz_norm5s
+  password: sVFAUMLVfB
+  port: 3306
+  database: fokolarz_main5

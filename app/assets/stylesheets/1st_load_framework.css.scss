@@ -84,4 +84,26 @@ section {
 
 
 // own css
+div[id^="add-"] {
+  display:none;
+}
 
+.navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
+    color: #000; /*Sets the text hover color on navbar*/
+}
+
+.navbar .navbar-nav > .active > a, .navbar .navbar-nav > .active >
+        a:hover, .navbar .navbar-nav > .active > a:focus {
+    color: white; /*BACKGROUND color for active*/
+    background-color: #030033;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+    text-decoration: none;
+    background-color: silver; /*Change rollover cell color here*/
+}
+
+.navbar .navbar-nav > li > a, .navbar-header .navbar-brand > li > a {
+    color: white; /*Change active text color here*/
+}

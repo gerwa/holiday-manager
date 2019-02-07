@@ -1,8 +1,9 @@
 class VisitorsController < ApplicationController
-
-  def testmail
-    MyMailer.testmail('gertraud.wachmann@hotmail.ch').deliver
-    redirect_to root_path
+  before_action :authenticate_user!
+  
+  def index
+    @events = Event.futureEckstein
   end
+
 
 end

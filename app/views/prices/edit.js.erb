@@ -1,0 +1,4 @@
+$("#price-<%= @price.id %>").closest('tr').after("<%= escape_javascript(render partial: 'edit', locals: { item: @price } )%>");
+$(document).ready(function() {
+    editRow();
+});
