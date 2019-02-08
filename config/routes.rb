@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   
   get 'event_registrations/registrations_list' => 'event_registrations#registrations_list'
   get 'event_registrations/overview' => 'event_registrations#overview'
+  get 'event_registrations/roominglist' => 'event_registrations#roominglist'
   get 'users/changepw' => 'users#changepw'
     
   resources :users

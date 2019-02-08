@@ -6,4 +6,5 @@
   %td= item.event_registrations.count
   //%td= item.veranstaltungsort
   %td= link_to image_tag("pdf.ico", :style => "max-height:20px; display: inline-block;"), event_registrations_overview_path(:eid => item.id, format: 'pdf'), target: '_blank', class: 'btn btn-default'
+  %td= link_to image_tag("excel.ico", :style => "max-height:20px; display: inline-block;"), event_registrations_roominglist_path(:eid => item.id, format: 'xls'), target: '_blank', class: 'btn btn-default'
   %td= link_to 'editieren Web', 'https://intern.zentrum-eckstein.ch/de/verwalten/ce-events-sv&eid=' + item.id.to_s, class: 'btn btn-primary', :target => '_blank'

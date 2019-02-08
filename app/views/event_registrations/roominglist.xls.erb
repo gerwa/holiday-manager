@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Styles>
+      <Style ss:ID="Default" ss:Name="Normal">
+          <Alignment ss:Vertical="Bottom"/>
+          <Borders/>
+          <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+          <Interior/>
+          <NumberFormat/>
+          <Protection/>
+      </Style>
+      <Style ss:ID="s1">
+          <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="16" ss:Color="#000000"
+  ss:Bold="1"/>
+      </Style>
+      <Style ss:ID="s2">
+          <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+  ss:Bold="1" ss:Italic="1"/>
+      </Style>
+  </Styles>
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Column ss:Width="30"/>
+      <Column ss:Width="80"/>
+      <Column ss:Width="80"/>
+      <Column ss:Width="30"/>
+      <Column ss:Width="40"/>
+      <Column ss:Width="80"/>
+      <Column ss:Width="40"/>
+      <Column ss:Width="80"/>
+      <Column ss:Width="80"/>
+      <Column ss:Width="50"/>
+      <Column ss:Width="60"/>
+      <Column ss:Width="60"/>
+      <Column ss:Width="40"/>
+      <Column ss:Width="100"/>
+      <Column ss:Width="100"/>      
+      <Row ss:AutoFitHeight="0" ss:Height="28.5">
+        <Cell ss:StyleID="s1"><Data ss:Type="String"><%= @event.titel%></Data></Cell>
+      </Row>
+      <Row>
+      </Row>
+      <Row ss:AutoFitHeight="1">
+        <Cell ss:StyleID="s2"><Data ss:Type="String">aid</Data></Cell>
+        <Cell ss:StyleID="s2"><Data ss:Type="String">Name</Data></Cell>
+        <Cell ss:StyleID="s2"><Data ss:Type="String">Vorname</Data></Cell>
+        <Cell ss:StyleID="s2"><Data ss:Type="String">Geschlecht</Data></Cell>
+        <Cell ss:StyleID="s2"><Data ss:Type="String">Geburtsdatum</Data></Cell>
+        <Cell ss:StyleID="s2"><Data ss:Type="String">Strasse</Data></Cell>
+        <Cell ss:StyleID="s2"><Data ss:Type="String">Nation</Data></Cell>
+        <Cell ss:StyleID="s2"><Data ss:Type="String">PLZ</Data></Cell>
+        <Cell ss:StyleID="s2"><Data ss:Type="String">Ort</Data></Cell>
+        <Cell ss:StyleID="s2"><Data ss:Type="String">Email</Data></Cell>
+        <Cell ss:StyleID="s2"><Data ss:Type="String">Telefon</Data></Cell>
+        <Cell ss:StyleID="s2"><Data ss:Type="String">Ankunft</Data></Cell>
+        <Cell ss:StyleID="s2"><Data ss:Type="String">Abreise</Data></Cell>
+        <Cell ss:StyleID="s2"><Data ss:Type="String">Zimmer</Data></Cell>
+        <Cell ss:StyleID="s2"><Data ss:Type="String">Bem Essen</Data></Cell>
+        <Cell ss:StyleID="s2"><Data ss:Type="String">Bem Anderes</Data></Cell>
+      </Row>
+    <% @event_registrations.each do |reg| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= reg.aid %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= reg.nachname %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= reg.vorname %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= (reg.geschlecht == 1 ? 'm' : 'w') %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Time.at(reg.geburtsdatum.to_i).in_time_zone("Rome").to_date.strftime("%d.%m.%Y") unless reg.geburtsdatum.to_i == 0 %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= reg.strasse_nr %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= reg.land %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= reg.plz %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= reg.ort %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= reg.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= reg.telefon %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Time.at(reg.ankunft.to_i).in_time_zone("Rome").to_date.strftime("%d.%m.%Y") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= Time.at(reg.abfahrt.to_i).in_time_zone("Rome").to_date.strftime("%d.%m.%Y") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= reg.getRoomcode[reg.uebernachtung] %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= reg.bem_essen %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= reg.bem_anderes %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+    <WorksheetOptions
+        xmlns="urn:schemas-microsoft-com:office:excel">
+        <PageSetup>
+            <Header x:Margin="0.31496062992125984"/>
+            <Footer x:Margin="0.31496062992125984"
+ x:Data="&amp;L&amp;8&amp;N&amp;Z&amp;8Seite &amp;S von &amp;A&amp;R&amp;8 gedruckt: &amp;D"/>
+            <PageMargins x:Bottom="0.78740157480314965" x:Left="0.70866141732283472"
+ x:Right="0.70866141732283472" x:Top="0.78740157480314965"/>
+        </PageSetup>
+    </WorksheetOptions>
+  </Worksheet>
+</Workbook>

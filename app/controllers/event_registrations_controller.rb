@@ -32,5 +32,13 @@ class EventRegistrationsController < ApplicationController
       end
     end
   end
+  
+  def roominglist
+    @event = Event.find params[:eid]
+    @event_registrations = EventRegistration.joins(:person).joins("left outer join tbl_zahlungen on tbl_zahlungen.aid = tbl_anmeldungen.aid").where("eid = ? and uebernachtung > 0", @event.id).select("tbl_anmeldungen.aid, nachname, vorname, ankunft, geburtsdatum, geschlecht, strasse_nr, plz, ort, land, email, telefon, abfahrt, uebernachtung, bem_essen, bem_anderes")
+    respond_to do |format|
+      format.xls
+    end
+  end
 
 end
